@@ -1,0 +1,12 @@
+node_modules/**
+**/node_modules/**
+build/**
+.tmp/**
+docs/**
+**/libs/**
+**/compiled/**
+*.json
+*.md
+*.less
+*.svg
+git

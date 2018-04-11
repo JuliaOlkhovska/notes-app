@@ -4,7 +4,8 @@
   "description": "This is demo project",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "lint-staged",
+    "eslint": "node node_modules/eslint/bin/eslint --format node_modules/eslint-html-reporter/reporter-team-city.js --output-file ./.tmp/plato-report/eslint-report-`date +%F`.html --ext .js,.jsx ./",
     "devserver": "webpack-dev-server"
   },
   "author": "Kateryna Porshnieva",
@@ -19,10 +20,17 @@
     "babel-preset-stage-0": "*",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
+    "eslint-config-airbnb": "15.0.1",
+    "eslint-friendly-formatter": "3.0.0",
+    "eslint-import-resolver-webpack": "0.8.1",
     "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "2.3.0",
+    "eslint-plugin-jest": "21.7.0",
+    "eslint-plugin-jsx-a11y": "5.0.3",
     "eslint-plugin-react": "^7.7.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.1.0",
+    "lint-staged": "^7.0.4",
     "node-sass": "*",
     "react-hot-loader": "^4.0.0",
     "sass-loader": "^6.0.7",
@@ -37,5 +45,10 @@
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "tapable": "^1.0.0"
+  },
+  "lint-staged": {
+    "*.less": "stylelint --formatter=verbose --syntax=less",
+    "*.css": "stylelint --formatter=verbose",
+    "*.@(js|jsx)": "eslint --quiet"
   }
 }
