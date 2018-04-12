@@ -1,3 +1,4 @@
+/* eslint-disable import/no-commonjs, global-require */
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -13,7 +14,7 @@ module.exports = {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].js'
     },
-    devtool: "cheap-eval-source-map",
+    devtool: 'cheap-eval-source-map',
     module: {
         rules: [
             {

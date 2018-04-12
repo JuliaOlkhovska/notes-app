@@ -3,10 +3,9 @@ import React from 'react';
 
 import './Note.css';
 
-class Note extends PureComponent {
-    render() {
-        const {activeNoteId, note, children, onEdit, onDelete} = this.props;
-        let style = {backgroundColor: note.color};
+function Note(props) {
+    const { activeNoteId, note, children, onEdit, onDelete } = props;
+    const style = { backgroundColor: note.color };
 
     return (
         <div style={style} className={activeNoteId === note.id ? 'note active' : 'note'}>

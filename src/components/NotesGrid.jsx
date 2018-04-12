@@ -1,15 +1,13 @@
 import Masonry from 'masonry-layout';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import Note from './Note.jsx';
 
+import Note from './Note.jsx';
 import './NotesGrid.css';
 
 class NotesGrid extends Component {
     componentDidMount() {
-        const grid = this.refs.grid;
-
-        this.msnry = new Masonry( grid, {
+        this.msnry = new Masonry(this.grid, {
             itemSelector: '.note',
             columnWidth: 200,
             gutter: 10,
@@ -24,11 +22,15 @@ class NotesGrid extends Component {
         }
     }
 
+    setRef = node => {
+        this.grid = node;
+    };
+
     render() {
         const { notes, activeNote, onNoteDelete, onNoteEdit } = this.props;
 
         return (
-            <div className="notes-grid" ref="grid">
+            <div className='notes-grid' ref={this.setRef}>
                 {
                     notes.map(note =>
                         (

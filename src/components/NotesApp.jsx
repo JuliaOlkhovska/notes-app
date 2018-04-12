@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
-import NoteEditor from './NoteEditor.jsx'
-import NotesGrid from './NotesGrid.jsx'
+import React, { Component } from 'react';
+import NoteEditor from './NoteEditor.jsx';
+import NotesGrid from './NotesGrid.jsx';
 
 import './NotesApp.css';
 
-class NotesApp extends Component{
-    constructor () {
+class NotesApp extends Component {
+    constructor() {
         super();
 
         this.state = {
             notes: [],
             activeNote: {}
-        }
+        };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const localNotes = JSON.parse(localStorage.getItem('notes'));
 
         if (localNotes) {
@@ -23,30 +23,28 @@ class NotesApp extends Component{
     }
 
     componentDidUpdate() {
-        this._updateLocalStorage();
+        this.updateLocalStorage();
     }
 
-    handleNoteDelete = (noteId) => {
-        const newNotes = this.state.notes.filter(function(note) {
-            return note.id !== noteId;
-        });
+    handleNoteDelete = noteId => () => {
+        const newNotes = this.state.notes.filter(note => note.id !== noteId);
 
         this.setState({ notes: newNotes });
     };
 
-    handleNoteAdd = (newNote) => {
-        let newNotes = this.state.notes.slice();
+    handleNoteAdd = newNote => {
+        const newNotes = this.state.notes.slice();
 
         newNotes.unshift(newNote);
 
         this.setState({ notes: newNotes });
     };
 
-    handleNoteEdit = (editedNote) => {
+    handleNoteEdit = editedNote => () => {
         this.setState({ activeNote: editedNote });
     };
 
-    handleSaveEditedNote = (editedNote) => {
+    handleSaveEditedNote = editedNote => {
         const newNotes = this.state.notes.map(note => {
             if (note.id === editedNote.id) {
                 note.text = editedNote.text;
@@ -55,17 +53,23 @@ class NotesApp extends Component{
             return note;
         });
 
-        this.setState({notes: newNotes, activeNote: {}});
+        this.setState({ notes: newNotes, activeNote: {} });
     };
+
+    updateLocalStorage() {
+        const notes = JSON.stringify(this.state.notes);
+
+        localStorage.setItem('notes', notes);
+    }
 
     render() {
         return (
-            <div className="notes-app">
-                <h2 className="app-header">NotesApp</h2>
+            <div className='notes-app'>
+                <h2 className='app-header'>NotesApp</h2>
                 <NoteEditor
                     activeNote={this.state.activeNote}
                     onNoteAdd={this.handleNoteAdd}
-                    saveEditedNote={this.handleSaveEditedNote}
+                    onSaveEditedNote={this.handleSaveEditedNote}
                 />
                 <NotesGrid
                     notes={this.state.notes}
@@ -75,12 +79,6 @@ class NotesApp extends Component{
                 />
             </div>
         );
-    }
-
-    _updateLocalStorage() {
-        let notes = JSON.stringify(this.state.notes);
-
-        localStorage.setItem('notes', notes);
     }
 }
 
