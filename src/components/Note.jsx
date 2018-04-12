@@ -9,8 +9,8 @@ function Note(props) {
 
     return (
         <div style={style} className={activeNoteId === note.id ? 'note active' : 'note'}>
-            <span className='edit-note' onClick={onEdit(note)}> &#128393; </span>
-            <span className='delete-note' onClick={onDelete(note.id)}> × </span>
+            <button className='edit-note' onClick={onEdit(note)}> &#128393; </button>
+            <button className='delete-note' onClick={onDelete(note.id)}> × </button>
             {children}
         </div>
     );
