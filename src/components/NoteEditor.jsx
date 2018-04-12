@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import './NoteEditor.css';
@@ -60,5 +61,15 @@ class NoteEditor extends Component {
         );
     }
 }
+
+NoteEditor.defaultProps = {
+    activeNote: {}
+};
+
+NoteEditor.propTypes = {
+    activeNote: PropTypes.object,
+    onNoteAdd: PropTypes.func.isRequired,
+    onSaveEditedNote: PropTypes.object.isRequired
+};
 
 export default NoteEditor;

@@ -1,3 +1,5 @@
+import Masonry from 'masonry-layout';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Note from './Note.jsx';
 
@@ -46,5 +48,17 @@ class NotesGrid extends Component {
         );
     }
 }
+
+NotesGrid.defaultProps = {
+    activeNote: {},
+    notes: []
+};
+
+NotesGrid.propTypes = {
+    activeNote: PropTypes.object,
+    notes: PropTypes.array,
+    onNoteDelete: PropTypes.func.isRequired,
+    onNoteEdit: PropTypes.func.isRequired
+};
 
 export default NotesGrid;
