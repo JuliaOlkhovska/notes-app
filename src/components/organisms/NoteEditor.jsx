@@ -1,27 +1,29 @@
-import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 
 import './NoteEditor.css';
+import NoteType from './NoteTypes';
 
-class NoteEditor extends Component {
-    constructor () {
+class NoteEditor extends PureComponent {
+    constructor() {
         super();
         this.state = {
             text: ''
-        }
+        };
     }
 
     componentWillReceiveProps(nextProps) {
         if (this.props.activeNote.id !== nextProps.activeNote.id) {
-            this.setState({ text: nextProps.activeNote.text || '' })
+            this.setState({ text: nextProps.activeNote.text || '' });
         }
     }
 
-    handleTextChange = (event) => {
+    handleTextChange = event => {
         this.setState({ text: event.target.value });
     };
 
     handleNoteAdd = () => {
-        let newNote = {
+        const newNote = {
             text: this.state.text,
             color: 'yellow',
             id: Date.now()
@@ -37,28 +39,37 @@ class NoteEditor extends Component {
             id: this.props.activeNote.id
         };
 
-        this.props.saveEditedNote(editedNote);
+        this.props.onSaveEditedNote(editedNote);
     };
 
-    render () {
+    render() {
         return (
-            <div className="note-editor">
+            <div className='note-editor'>
                 <textarea
-                    placeholder="Enter your note here..."
+                    placeholder='Enter your note here...'
                     rows={5}
-                    className="textarea"
+                    className='textarea'
                     value={this.state.text}
                     onChange={this.handleTextChange}
                 />
                 {
                     this.props.activeNote.id ?
-                        <button className="add-button" onClick={this.handleNoteEdit}>Edit</button>
-                        :
-                        <button className="add-button" onClick={this.handleNoteAdd}>Add</button>
+                        <button className='add-button' onClick={this.handleNoteEdit}>Edit</button> :
+                        <button className='add-button' onClick={this.handleNoteAdd}>Add</button>
                 }
             </div>
         );
     }
 }
+
+NoteEditor.defaultProps = {
+    activeNote: {}
+};
+
+NoteEditor.propTypes = {
+    activeNote: PropTypes.shape(NoteType),
+    onNoteAdd: PropTypes.func.isRequired,
+    onSaveEditedNote: PropTypes.object.isRequired
+};
 
 export default NoteEditor;
