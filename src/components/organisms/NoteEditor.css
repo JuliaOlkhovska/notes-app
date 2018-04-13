@@ -1,0 +1,52 @@
+.note-editor {
+    display: flex;
+    flex-direction: column;
+    margin: 16px auto;
+    padding: 16px;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+    background-color: white;
+}
+
+.textarea {
+    margin: 5px;
+    width: 100%;
+    resize: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.textarea:focus {
+    outline: 0;
+}
+
+.add-button {
+    align-self: flex-end;
+    padding: 8px 8px;
+    width: 100px;
+    border: 1px solid #18ab29;
+    border-radius: 28px;
+    cursor: pointer;
+    background-color: #44c767;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #2f6627;
+    text-transform: uppercase;
+}
+
+.add-button:hover {
+    background-color: #5cbf2a;
+}
+
+.add-button:active {
+    position: relative;
+    top: 1px;
+}
+
+.add-button:focus {
+    outline: 0;
+}
