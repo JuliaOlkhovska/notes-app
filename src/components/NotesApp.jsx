@@ -17,9 +17,7 @@ class NotesApp extends Component {
     componentWillMount() {
         const localNotes = JSON.parse(localStorage.getItem('notes'));
 
-        if (localNotes) {
-            this.setState({ notes: localNotes });
-        }
+        this.setState({ notes: localNotes });
     }
 
     componentDidUpdate() {
@@ -56,6 +54,9 @@ class NotesApp extends Component {
         this.setState({ notes: newNotes, activeNote: {} });
     };
 
+    /**
+     * @private
+     */
     updateLocalStorage() {
         const notes = JSON.stringify(this.state.notes);
 

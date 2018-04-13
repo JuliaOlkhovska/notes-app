@@ -1,11 +1,11 @@
 import Masonry from 'masonry-layout';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import Note from './Note.jsx';
 import './NotesGrid.css';
 
-class NotesGrid extends Component {
+class NotesGrid extends PureComponent {
     componentDidMount() {
         this.msnry = new Masonry(this.grid, {
             itemSelector: '.note',
@@ -57,8 +57,16 @@ NotesGrid.defaultProps = {
 };
 
 NotesGrid.propTypes = {
-    activeNote: PropTypes.object,
-    notes: PropTypes.array,
+    activeNote: PropTypes.shape({
+        id: PropTypes.number,
+        text: PropTypes.string,
+        color: PropTypes.string
+    }),
+    notes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number,
+        text: PropTypes.string,
+        color: PropTypes.string
+    })),
     onNoteDelete: PropTypes.func.isRequired,
     onNoteEdit: PropTypes.func.isRequired
 };
