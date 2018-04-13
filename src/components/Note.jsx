@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
 import './Note.css';
 
-function Note({ activeNoteId, note, children, onEdit, onDelete } = this.props) {
+function Note({ activeNoteId, note, children, onEdit, onDelete }) {
     const style = { backgroundColor: note.color };
 
     return (
@@ -21,5 +22,17 @@ function Note({ activeNoteId, note, children, onEdit, onDelete } = this.props) {
         </div>
     );
 }
+
+Note.propTypes = {
+    activeNoteId: PropTypes.number,
+    note: PropTypes.shape({
+        id: PropTypes.number,
+        text: PropTypes.string,
+        color: PropTypes.string
+    }).isRequired,
+    children: PropTypes.node.isRequired,
+    onEdit: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired
+};
 
 export default Note;

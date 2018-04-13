@@ -9,15 +9,9 @@ class NotesApp extends Component {
         super();
 
         this.state = {
-            notes: [],
+            notes: JSON.parse(localStorage.getItem('notes')) || [],
             activeNote: {}
         };
-    }
-
-    componentWillMount() {
-        const localNotes = JSON.parse(localStorage.getItem('notes'));
-
-        this.setState({ notes: localNotes });
     }
 
     componentDidUpdate() {
