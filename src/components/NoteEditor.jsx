@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 
 import './NoteEditor.css';
+import NoteType from './NoteTypes';
 
 class NoteEditor extends PureComponent {
     constructor() {
@@ -66,11 +67,7 @@ NoteEditor.defaultProps = {
 };
 
 NoteEditor.propTypes = {
-    activeNote: PropTypes.shape({
-        id: PropTypes.number,
-        text: PropTypes.string,
-        color: PropTypes.string
-    }),
+    activeNote: PropTypes.shape(NoteType),
     onNoteAdd: PropTypes.func.isRequired,
     onSaveEditedNote: PropTypes.object.isRequired
 };
