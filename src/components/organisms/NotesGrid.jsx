@@ -2,7 +2,7 @@ import Masonry from 'masonry-layout';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 
-import Note from './Note.jsx';
+import Note from '../atoms/Note.jsx';
 import './NotesGrid.css';
 
 class NotesGrid extends PureComponent {
