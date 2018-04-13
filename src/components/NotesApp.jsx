@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import NoteEditor from './NoteEditor.jsx';
-import NotesGrid from './NotesGrid.jsx';
+import NoteEditor from './organisms/NoteEditor.jsx';
+import NotesGrid from './organisms/NotesGrid.jsx';
 
 import './NotesApp.css';
 
