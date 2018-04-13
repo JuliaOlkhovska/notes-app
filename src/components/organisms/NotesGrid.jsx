@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Note from './Note.jsx';
+import Note from '../atoms/Note.jsx';
 
 import './NotesGrid.css';
 
