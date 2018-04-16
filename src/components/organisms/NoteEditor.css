@@ -38,10 +38,6 @@
     text-transform: uppercase;
 }
 
-.add-button:hover {
-    background-color: #5cbf2a;
-}
-
 .add-button:active {
     position: relative;
     top: 1px;
@@ -51,11 +47,10 @@
     outline: 0;
 }
 
-.add-button[disabled] {
-    opacity: .8;
+.add-button:not([disabled]):hover {
+    background-color: #5cbf2a;
 }
 
-.add-button[disabled]:hover {
-    background-color: #44c767;
+.add-button[disabled] {
     opacity: .8;
 }
