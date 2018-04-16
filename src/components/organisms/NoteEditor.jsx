@@ -34,6 +34,7 @@ class NoteEditor extends PureComponent {
     };
 
     handleNoteEdit = () => {
+        this.textArea.focus();
         const editedNote = {
             text: this.state.text,
             id: this.props.activeNote.id
@@ -42,8 +43,8 @@ class NoteEditor extends PureComponent {
         this.props.onSaveEditedNote(editedNote);
     };
 
-    setRef = () => {
-        document.querySelector('.textarea').focus();
+    setRef = element => {
+        this.textArea = element;
     };
 
     render() {
@@ -59,6 +60,7 @@ class NoteEditor extends PureComponent {
                     placeholder='Enter your note here...'
                     rows={5}
                     className='textarea'
+                    ref={this.setRef}
                     value={this.state.text}
                     onChange={this.handleTextChange}
                 />
@@ -68,7 +70,6 @@ class NoteEditor extends PureComponent {
                         <button
                             className='add-button'
                             onClick={this.handleNoteAdd}
-                            ref={this.setRef}
                             disabled={disabled}
                         >Add
                         </button>
