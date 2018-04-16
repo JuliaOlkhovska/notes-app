@@ -34,17 +34,12 @@ class NoteEditor extends PureComponent {
     };
 
     handleNoteEdit = () => {
-        this.textArea.focus();
         const editedNote = {
             text: this.state.text,
             id: this.props.activeNote.id
         };
 
         this.props.onSaveEditedNote(editedNote);
-    };
-
-    setRef = element => {
-        this.textArea = element;
     };
 
     render() {
@@ -60,7 +55,7 @@ class NoteEditor extends PureComponent {
                     placeholder='Enter your note here...'
                     rows={5}
                     className='textarea'
-                    ref={this.setRef}
+                    ref={this.props.setRef}
                     value={this.state.text}
                     onChange={this.handleTextChange}
                 />
@@ -86,7 +81,8 @@ NoteEditor.defaultProps = {
 NoteEditor.propTypes = {
     activeNote: PropTypes.shape(NoteType),
     onNoteAdd: PropTypes.func.isRequired,
-    onSaveEditedNote: PropTypes.object.isRequired
+    onSaveEditedNote: PropTypes.object.isRequired,
+    setRef: PropTypes.object.isRequired
 };
 
 export default NoteEditor;
