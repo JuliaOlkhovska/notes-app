@@ -42,6 +42,10 @@ class NoteEditor extends PureComponent {
         this.props.onSaveEditedNote(editedNote);
     };
 
+    setRef = () => {
+        document.querySelector('.textarea').focus();
+    };
+
     render() {
         let disabled = true;
 
@@ -64,6 +68,7 @@ class NoteEditor extends PureComponent {
                         <button
                             className='add-button'
                             onClick={this.handleNoteAdd}
+                            ref={this.setRef}
                             disabled={disabled}
                         >Add
                         </button>
