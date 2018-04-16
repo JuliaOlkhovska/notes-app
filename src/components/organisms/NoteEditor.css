@@ -51,11 +51,11 @@
     outline: 0;
 }
 
-button[disabled] {
-    opacity: .8 !important;
+.add-button[disabled] {
+    opacity: .8;
 }
 
-button[disabled]:hover {
-    background-color: #44c767 !important;
-    opacity: .8 !important;
+.add-button[disabled]:hover {
+    background-color: #44c767;
+    opacity: .8;
 }
