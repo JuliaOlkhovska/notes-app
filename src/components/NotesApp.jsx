@@ -37,6 +37,12 @@ class NotesApp extends Component {
     };
 
     handleSaveEditedNote = editedNote => {
+        if (editedNote.text === '') {
+            this.handleNoteDelete(editedNote.id)();
+            this.setState({ activeNote: {} });
+            return;
+        }
+
         const newNotes = this.state.notes.map(note => {
             if (note.id === editedNote.id) {
                 note.text = editedNote.text;

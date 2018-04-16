@@ -43,6 +43,12 @@ class NoteEditor extends PureComponent {
     };
 
     render() {
+        let disabled = true;
+
+        if (this.state.text !== '') {
+            disabled = false;
+        }
+
         return (
             <div className='note-editor'>
                 <textarea
@@ -55,7 +61,12 @@ class NoteEditor extends PureComponent {
                 {
                     this.props.activeNote.id ?
                         <button className='add-button' onClick={this.handleNoteEdit}>Edit</button> :
-                        <button className='add-button' onClick={this.handleNoteAdd}>Add</button>
+                        <button
+                            className='add-button'
+                            onClick={this.handleNoteAdd}
+                            disabled={disabled}
+                        >Add
+                        </button>
                 }
             </div>
         );
