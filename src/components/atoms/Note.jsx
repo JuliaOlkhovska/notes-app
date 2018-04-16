@@ -16,9 +16,10 @@ const Note = ({ activeNoteId, note, children, onEdit, onDelete }) => {
                 active: activeNoteId === note.id
             })}
         >
-            <button className='edit-note' onClick={onEdit(note)}> &#128393; </button>
             <button className='delete-note' onClick={onDelete(note.id)}> × </button>
-            {children}
+            <div onClick={onEdit(note)}>
+                {children}
+            </div>
         </div>
     );
 };
