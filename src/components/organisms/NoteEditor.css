@@ -50,3 +50,12 @@
 .add-button:focus {
     outline: 0;
 }
+
+button[disabled] {
+    opacity: .8 !important;
+}
+
+button[disabled]:hover {
+    background-color: #44c767 !important;
+    opacity: .8 !important;
+}
