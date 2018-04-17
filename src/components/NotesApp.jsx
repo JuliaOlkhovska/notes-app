@@ -33,6 +33,7 @@ class NotesApp extends Component {
     };
 
     handleNoteEdit = editedNote => () => {
+        this.editor.focus();
         this.setState({ activeNote: editedNote });
     };
 
@@ -63,11 +64,16 @@ class NotesApp extends Component {
         localStorage.setItem('notes', notes);
     }
 
+    setRefEditor = element => {
+        this.editor = element;
+    };
+
     render() {
         return (
             <div className='notes-app'>
                 <h2 className='app-header'>NotesApp</h2>
                 <NoteEditor
+                    setRef={this.setRefEditor}
                     activeNote={this.state.activeNote}
                     onNoteAdd={this.handleNoteAdd}
                     onSaveEditedNote={this.handleSaveEditedNote}
