@@ -3,6 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import './Note.css';
+import Palette from '../../atoms/Palette/Palette.jsx';
 import NoteType from '../../NoteTypes';
 
 const Note = ({ activeNoteId, note, children, onEdit, onDelete }) => {
@@ -19,6 +20,10 @@ const Note = ({ activeNoteId, note, children, onEdit, onDelete }) => {
             <button className='delete-note' onClick={onDelete(note.id)}> × </button>
             <div onClick={onEdit(note)}>
                 {children}
+            </div>
+            <div className='palette-wrapper'>
+                <div className='palette-icon' />
+                <Palette />
             </div>
         </div>
     );

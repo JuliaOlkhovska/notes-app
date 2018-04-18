@@ -1,31 +1,26 @@
-/* <div className='palette-button'>
-    <div className='palette'>
-        {
-            colors.map(color =>
-                (
-                    <div
-                        className='select-color'
-                        key={color.id}
-                        style={{ backgroundColor: color.value }}
-                        // color={color.name}
-                        onClick={onChangeColor(color.id)}
-                    />
-                )
-            )
-        }
-    </div>
-</div> */
+import React, { PureComponent } from 'react';
 
-// handleChangeColor = colorId => () => {
-//     let newColor = '';
-//
-//     this.state.colors.forEach(color => {
-//         if (colorId === color.id) {
-//             newColor += color.value;
-//         }
-//         return newColor;
-//     });
-//
-//     this.setState({ colorValue: newColor });
-//     console.log(this.state.colorValue);
-// };
+import './Palette.css';
+
+class Palette extends PureComponent {
+    render() {
+        return (
+            <div className='colors'>
+                <div className='select-color' />
+                <div className='select-color' />
+                <div className='select-color' />
+                <div className='select-color' />
+                <div className='select-color' />
+                <div className='select-color' />
+                <div className='select-color' />
+                <div className='select-color' />
+                <div className='select-color' />
+                <div className='select-color' />
+                <div className='select-color' />
+                <div className='select-color' />
+            </div>
+        );
+    }
+}
+
+export default Palette;
