@@ -3,7 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import './Note.css';
-import NoteType from '../NoteTypes';
+import NoteType from '../../NoteTypes';
 
 const Note = ({ activeNoteId, note, children, onEdit, onDelete }) => {
     const style = { backgroundColor: note.color };

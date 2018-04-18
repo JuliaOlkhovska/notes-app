@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import NoteEditor from './organisms/NoteEditor.jsx';
-import NotesGrid from './organisms/NotesGrid.jsx';
+import NoteEditor from './organisms/NoteEditor/NoteEditor.jsx';
+import NotesGrid from './organisms/NotesGrid/NotesGrid.jsx';
 
 import './NotesApp.css';
 
 class NotesApp extends Component {
     constructor() {
         super();
-
         this.state = {
             notes: JSON.parse(localStorage.getItem('notes')) || [],
             activeNote: {}
