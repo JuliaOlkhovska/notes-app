@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 
 import './NoteEditor.css';
-import NoteType from '../NoteTypes';
+import NoteType from '../../NoteTypes';
 
 class NoteEditor extends PureComponent {
     constructor() {

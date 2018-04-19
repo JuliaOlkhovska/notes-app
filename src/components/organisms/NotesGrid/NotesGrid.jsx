@@ -2,9 +2,9 @@ import Masonry from 'masonry-layout';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 
-import Note from '../atoms/Note.jsx';
 import './NotesGrid.css';
-import NoteType from '../NoteTypes';
+import Note from '../../molecules/Note/Note.jsx';
+import NoteType from '../../NoteTypes';
 
 class NotesGrid extends PureComponent {
     componentDidMount() {
@@ -28,7 +28,7 @@ class NotesGrid extends PureComponent {
     };
 
     render() {
-        const { notes, activeNote, onNoteDelete, onNoteEdit } = this.props;
+        const { notes, activeNote, onNoteDelete, onNoteEdit, onEditColorNote } = this.props;
 
         return (
             <div className='notes-grid' ref={this.setRef}>
@@ -39,6 +39,7 @@ class NotesGrid extends PureComponent {
                                 note={note}
                                 key={note.id}
                                 activeNoteId={activeNote.id}
+                                onSelectColor={onEditColorNote}
                                 onDelete={onNoteDelete}
                                 onEdit={onNoteEdit}
                             >
@@ -61,7 +62,8 @@ NotesGrid.propTypes = {
     activeNote: PropTypes.shape(NoteType),
     notes: PropTypes.arrayOf(PropTypes.shape(NoteType)),
     onNoteDelete: PropTypes.func.isRequired,
-    onNoteEdit: PropTypes.func.isRequired
+    onNoteEdit: PropTypes.func.isRequired,
+    onEditColorNote: PropTypes.object.isRequired
 };
 
 export default NotesGrid;

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import NoteEditor from './organisms/NoteEditor.jsx';
-import NotesGrid from './organisms/NotesGrid.jsx';
+import NoteEditor from './organisms/NoteEditor/NoteEditor.jsx';
+import NotesGrid from './organisms/NotesGrid/NotesGrid.jsx';
 
 import './NotesApp.css';
 
 class NotesApp extends Component {
     constructor() {
         super();
-
         this.state = {
             notes: JSON.parse(localStorage.getItem('notes')) || [],
             activeNote: {}
@@ -55,6 +54,18 @@ class NotesApp extends Component {
         this.setState({ notes: newNotes, activeNote: {} });
     };
 
+    handleEditColorNote = ({ noteId, colorValue }) => () => {
+        const newNotes = this.state.notes.map(note => {
+            if (note.id === noteId) {
+                note.color = colorValue;
+            }
+
+            return note;
+        });
+
+        this.setState({ notes: newNotes });
+    };
+
     /**
      * @private
      */
@@ -81,6 +92,7 @@ class NotesApp extends Component {
                 <NotesGrid
                     notes={this.state.notes}
                     activeNote={this.state.activeNote}
+                    onEditColorNote={this.handleEditColorNote}
                     onNoteDelete={this.handleNoteDelete}
                     onNoteEdit={this.handleNoteEdit}
                 />
