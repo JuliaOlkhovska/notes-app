@@ -35,7 +35,7 @@ const colors = [
         id: 7
     },
     {
-        name: 'dark blue',
+        name: 'darkblue',
         value: '#1e90ff',
         id: 8
     },

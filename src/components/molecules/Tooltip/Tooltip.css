@@ -1,0 +1,20 @@
+.tooltipContainer {
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    padding: 5px;
+    height: 25px;
+    border-radius: 3px;
+    background-color: #494949;
+    color: #fffff0;
+    font-size: 12px;
+}
+
+.tooltipWrapper:hover .tooltip {
+    display: block;
+}
