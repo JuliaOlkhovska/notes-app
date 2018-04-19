@@ -54,6 +54,18 @@ class NotesApp extends Component {
         this.setState({ notes: newNotes, activeNote: {} });
     };
 
+    handleEditColorNote = ({ noteId, colorValue }) => () => {
+        const newNotes = this.state.notes.map(note => {
+            if (note.id === noteId) {
+                note.color = colorValue;
+            }
+
+            return note;
+        });
+
+        this.setState({ notes: newNotes });
+    };
+
     /**
      * @private
      */
@@ -80,6 +92,7 @@ class NotesApp extends Component {
                 <NotesGrid
                     notes={this.state.notes}
                     activeNote={this.state.activeNote}
+                    onEditColorNote={this.handleEditColorNote}
                     onNoteDelete={this.handleNoteDelete}
                     onNoteEdit={this.handleNoteEdit}
                 />

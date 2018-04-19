@@ -6,35 +6,35 @@ import './Note.css';
 import Palette from '../../atoms/Palette/Palette.jsx';
 import NoteType from '../../NoteTypes';
 
-const Note = ({ activeNoteId, note, children, onEdit, onDelete }) => {
-    const style = { backgroundColor: note.color };
-
-    return (
-        <div
-            style={style}
-            className={classNames({
-                note: true,
-                active: activeNoteId === note.id
-            })}
-        >
-            <button className='delete-note' onClick={onDelete(note.id)}> × </button>
-            <div onClick={onEdit(note)}>
-                {children}
-            </div>
-            <div className='palette-wrapper'>
-                <div className='palette-icon' />
-                <Palette />
-            </div>
+const Note = ({ activeNoteId, note, children, onSelectColor, onEdit, onDelete }) => (
+    <div
+        style={{ backgroundColor: note.color }}
+        className={classNames({
+            note: true,
+            active: activeNoteId === note.id
+        })}
+    >
+        <button className='delete-note' onClick={onDelete(note.id)}> ×</button>
+        <div onClick={onEdit(note)}>
+            {children}
         </div>
-    );
-};
+        <div className='palette-wrapper'>
+            <div className='palette-icon' />
+            <Palette
+                noteId={note.id}
+                onSelectColor={onSelectColor}
+            />
+        </div>
+    </div>
+);
 
 Note.propTypes = {
     activeNoteId: PropTypes.number,
     note: PropTypes.shape(NoteType).isRequired,
     children: PropTypes.node.isRequired,
     onEdit: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired
+    onDelete: PropTypes.func.isRequired,
+    onSelectColor: PropTypes.object.isRequired
 };
 
 export default Note;
