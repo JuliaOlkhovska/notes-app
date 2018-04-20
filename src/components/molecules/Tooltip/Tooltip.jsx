@@ -14,11 +14,7 @@ const Tooltip = ({ children, hintText }) => (
 );
 
 Tooltip.PropTypes = {
-    children: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.string,
-        PropTypes.element
-    ]),
+    children: PropTypes.node,
     hintText: PropTypes.string
 };
 
