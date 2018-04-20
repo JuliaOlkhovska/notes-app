@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -5,7 +6,7 @@ import './Palette.css';
 import colors from './Colors';
 import Tooltip from '../../molecules/Tooltip/Tooltip.jsx';
 
-const Palette = ({ noteId, onSelectColor } = this.props) => (
+const Palette = ({ noteId, onSelectColor }) => (
     <div className='palette'>
         {
             colors.map(color =>

@@ -13,6 +13,7 @@
     background-color: #494949;
     color: #fffff0;
     font-size: 12px;
+    pointer-events: none;
 }
 
 .tooltipWrapper:hover .tooltip {
