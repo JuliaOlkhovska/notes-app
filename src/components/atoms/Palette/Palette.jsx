@@ -1,20 +1,23 @@
+/* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import './Palette.css';
 import colors from './Colors';
+import Tooltip from '../../molecules/Tooltip/Tooltip.jsx';
 
-const Palette = ({ noteId, onSelectColor } = this.props) => (
+const Palette = ({ noteId, onSelectColor }) => (
     <div className='palette'>
         {
             colors.map(color =>
                 (
-                    <button
-                        className='select-color'
-                        key={color.id}
-                        style={{ backgroundColor: color.value }}
-                        onClick={onSelectColor({ noteId, colorValue: color.value })}
-                    />
+                    <Tooltip key={color.id} hintText={color.name}>
+                        <button
+                            className='select-color'
+                            style={{ backgroundColor: color.value }}
+                            onClick={onSelectColor({ noteId, colorValue: color.value })}
+                        />
+                    </Tooltip>
                 )
             )
         }

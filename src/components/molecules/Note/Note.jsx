@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import './Note.css';
 import Palette from '../../atoms/Palette/Palette.jsx';
+import PaletteIcon from '../../atoms/Icons/PaletteIcon.jsx';
 import NoteType from '../../NoteTypes';
 
 const Note = ({ activeNoteId, note, children, onSelectColor, onEdit, onDelete }) => (
@@ -19,7 +20,7 @@ const Note = ({ activeNoteId, note, children, onSelectColor, onEdit, onDelete })
             {children}
         </div>
         <div className='palette-wrapper'>
-            <div className='palette-icon' />
+            <PaletteIcon />
             <Palette
                 noteId={note.id}
                 onSelectColor={onSelectColor}
